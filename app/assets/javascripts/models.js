@@ -1,26 +1,25 @@
-var currentPokemonData = function(){
+var currentPokemonData = function() {
   return {
     id: $pokemon.data('rid'),
-    pkdx_id: $pokemon.data('pkdx_id'),
+    pkdx_id: $pokemon.data('pkdx-id'),
     name: $pokemon.find('h4').text(),
     image_url: $pokemon.find('img').attr('src')
   };
 }
 
+var currentPlayer = function($chosen) {
+  return $chosen.children().first().data('name');
+}
+
 // Click methods
 var catchPokemon = function(e) {
-  $chosen_player = $('.chosen').children().first();
-  $pokemon       = $(e.target).parent();
-  console.log($chosen_player.data('name') + ' --> ' + $pokemon.data('rid'));
-  var data = currentPokemonData();
+  var $chosen_player = $('.chosen').children().first();
+  var $pokemon       = $(e.target).parent();
+  var data           = currentPokemonData();
 
   clearRandomPokemon();
-  // this is a stub...
-  // fires when you click the catch button (see large template above)
-
-  attachSmallPokemonTemplate(data, $chosen_player.find(".panel-body"));
-
-  console.log("success");
+  attachSmallPokemonTemplate(data, $chosen_player.find('.panel-body'));
+  console.log($chosen_player.data('name') + ' --> ' + $pokemon.data('rid'));
 }
 
 // these methods change the chosen pokeball and return whose pokeball it is
@@ -43,8 +42,4 @@ var iChoseNext = function() {
   } else { // no pokeballs!
     return null;
   }
-}
-
-var currentPlayer = function($chosen) {
-  return $chosen.children().first().data('name');
 }

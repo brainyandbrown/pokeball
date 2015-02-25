@@ -1,20 +1,18 @@
-var attachSmallPokemonTemplate = function(attributes, elementAppendedTo) {
-  clearRandomPokemon();
-  $pokemon = $templatePokemonSmall(attributes);
-  $template.appendTo(elementAppendedTo);
-  // call your small template and then append it where it should go
+var attachSmallPokemonTemplate = function(attributes, $elementAppendedTo) {
+  var $template = $templatePokemonSmall(attributes);
+  $template.appendTo($elementAppendedTo);
 }
 var $templatePokemonSmall = function(attributes) {
-  // create a small jQuery template for Pokémon
-  // to insert into your Poké ball!
+  // <div class="pokemon template small animated zoomIn" data-rid="25" data-pkdx-id="25">
+  //   <h4>Pikachu</h4>
+  //   <img class="poke-sprite" width="120" src="http://pokeapi.co/media/img/25.png">
+  // </div>
   var $template = $('<div class="pokemon template small animated zoomIn">')
-    .attr('data-rid', attributes.id)
-    .attr('data-pkdx-id', attributes.pkdx_id)
-  $('<h4>').text(attributes.name)
-    .appendTo($template);
-  $('<img class="poke-sprite" width="120">')
-    .attr('src', attributes.image_url)
+                    .attr('data-rid', attributes.id)
+                    .attr('data-pkdx-id', attributes.pkdx_id)
+  $('<h4>').text(attributes.name).appendTo($template);
+  $('<img class="poke-sprite" width="120">').attr('src', attributes.image_url)
     .appendTo($template);
 
-    return $template;
+  return $template;
 }

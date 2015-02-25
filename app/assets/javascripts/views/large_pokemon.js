@@ -1,3 +1,8 @@
+// Below are the functions necessary to create the HTML for a Pokemon
+// object on the screen. You need to call the first function with a
+// JS object that has the attributes id, name, pkdx_id, and image_url
+// (at least), and a string name of who can catch it
+
 var attachLargePokemonTemplate = function(attributes) {
   clearRandomPokemon();
   $randomPokemon.removeClass('empty');
